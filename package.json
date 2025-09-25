@@ -1,25 +1,21 @@
 {
   "name": "dummy-ai-server",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "npm run build && cls && node ./dist/index.js",
+    "dev": "npm run build && node ./dist/index.js",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "module",
-  "devDependencies": {
-    "@types/express": "^5.0.3",
-    "typescript": "^5.9.2"
-  },
   "dependencies": {
     "@google/genai": "^1.20.0",
     "dotenv": "^17.2.2",
     "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "typescript": "^5.9.2"
   }
 }
