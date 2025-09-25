@@ -27,7 +27,10 @@ async function generateAIData(schema: Schema): Promise<string | null> {
     try {
         const res = await gemini.models.generateContent({
             model: 'gemini-2.5-flash',
-            contents: `Generate dummy JSON for the following schema: ${JSON.stringify(schema)} PLEASE don't say ANYTHING, just return plain JSON string, no comments, no nothing, so i can parse it directly.`
+            contents: `Generate dummy JSON for the following schema: ${JSON.stringify(schema)} PLEASE don't say ANYTHING, just return plain JSON string, no comments, no nothing, so i can parse it directly.`,
+            config: {
+                temperature: 1.2
+            }
         });
 
         const clean = (res.text ?? '')
