@@ -1,4 +1,5 @@
 import express from 'express';
+import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 
@@ -11,7 +12,15 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY!;
 const gemini = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 const app = express();
 
+const limiter = rateLimit({
+    windowMs: 45 * 1000,
+    max: 60,
+    standardHeaders: true,
+    legacyHeaders: false
+});
+
 app.use(express.json());
+app.use(limiter);
 
 // Types
 
